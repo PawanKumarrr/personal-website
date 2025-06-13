@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comparative Neuroevolution - Pawan Kumar</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            background: #34495e;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        ul {
+            padding-left: 1.5rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #2c3e50;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .video-item {
+            flex: 1 1 45%;
+            max-width: 45%;
+            text-align: center;
+        }
+        .video-item p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            section {
+                padding: 1rem;
+            }
+            .video-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Comparative Neuroevolution: PPO vs. CMA-ES</h1>
+        <p>Pawan Kumar</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Back to Home</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Introduction</h2>
+        <p>My project, "Evolving Continuous Control Policies through Comparative Neuroevolution," compares two powerful optimization approaches for developing control policies in reinforcement learning (RL): <strong>Proximal Policy Optimization (PPO)</strong>, a gradient-based RL algorithm, and <strong>Covariance Matrix Adaptation Evolution Strategy (CMA-ES)</strong>, a gradient-free evolutionary method. Conducted in the MuJoCo physics simulation environment, this study evaluates their performance across four continuous-control tasks: <strong>Reacher-v5</strong>, <strong>Ant-v5</strong>, <strong>HalfCheetah-v5</strong>, and <strong>InvertedDoublePendulum-v5</strong>. PPO leverages backpropagation for rapid convergence in high-dimensional tasks, while CMA-ES optimizes neural network parameters without gradients, enabling robust exploration of complex solution spaces. The comparison highlights their complementary strengths, offering insights into their applicability and potential for hybrid optimization strategies.</p>
+        <p><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">Explore the project on GitHub</a></p>
+    </section>
+    <section>
+        <h2>Objectives</h2>
+        <p>The primary goal was to benchmark PPO and CMA-ES to understand their effectiveness in evolving neural network policies for continuous control tasks. Specific objectives included:</p>
+        <ul>
+            <li>Evaluating <strong>sample efficiency</strong> (how quickly an algorithm learns) and <strong>final performance</strong> (quality of the learned policy).</li>
+            <li>Comparing PPO's rapid convergence with CMA-ES's ability to explore rugged reward landscapes and avoid local optima.</li>
+            <li>Developing reproducible frameworks for both algorithms to support further research.</li>
+            <li>Identifying complementary strengths to propose hybrid optimization approaches combining gradient-based and evolutionary strategies.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Methodology</h2>
+        <h3>Environments</h3>
+        <p>The MuJoCo environments tested were:</p>
+        <ul>
+            <li><strong>Reacher-v5</strong>: A two-link robotic arm reaching for a randomly located target in a 2D plane, with a 10-dimensional observation space and 2-dimensional action space. Episode length was extended from 50 to 200 timesteps, and the control penalty was set to zero to focus on minimizing target distance.</li>
+            <li><strong>Ant-v5</strong>: A quadrupedal robot learning to walk in a 3D space, with a 105-dimensional observation space and 8-dimensional action space, using a reward function balancing forward movement, stability, and control costs.</li>
+            <li><strong>HalfCheetah-v5</strong>: A two-dimensional robot running forward, with a 17-dimensional observation space and 6-dimensional action space, rewarded for forward velocity with a control cost penalty.</li>
+            <li><strong>InvertedDoublePendulum-v5</strong>: A two-link pendulum on a cart balanced upright, with a 9-dimensional observation space and 1-dimensional action space, rewarded for maintaining an upright position with penalties for displacement and velocity.</li>
+        </ul>
+        <h3>Implementation</h3>
+        <ul>
+            <li><strong>PPO</strong>: Implemented using the Stable-Baselines3 library with a multilayer perceptron (MLP) policy (two hidden layers of 64 or 32 units, ReLU activations). Hyperparameters included a learning rate of 3e-4, batch size of 256, and clipping parameter of 0.2. Training used 4–12 parallel environments with up to 5 million timesteps, logging episodic returns to CSV files. Plots were generated using Matplotlib.</li>
+            <li><strong>CMA-ES</strong>: Built a custom framework using the DEAP library, with feedforward neural networks (1–2 hidden layers, e.g., [8] for Reacher-v5, [32, 16] for Ant-v5). Population sizes ranged from 10–50, with step-sizes (σ) from 0.01–0.4, and up to 3000 generations. Parallel evaluations used Python’s multiprocessing Pool, with 5–50 episodes per candidate. Checkpoints saved the best parameters, and logs tracked returns in CSV format.</li>
+            <li><strong>Training Setup</strong>: Both methods were evaluated on a high-performance computing cluster using Slurm, with unique random seeds for reproducibility. PPO collected rollouts in parallel, updating policies with mini-batches, while CMA-ES sampled populations and adapted the covariance matrix based on ranked fitness.</li>
+        </ul>
+        <h3>Evaluation</h3>
+        <p>Performance was assessed by:</p>
+        <ul>
+            <li><strong>Average return</strong>: Cumulative rewards over 15–20 test episodes with fixed seeds.</li>
+            <li><strong>Learning curves</strong>: Plotted to compare convergence speed and stability across seeds.</li>
+            <li><strong>Final performance</strong>: Box plots of reward distributions to evaluate consistency.</li>
+            <li><strong>Rollout videos</strong>: Visualized policy behavior for qualitative analysis (see below).</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Results</h2>
+        <p>The study revealed distinct strengths for PPO and CMA-ES across the four MuJoCo tasks:</p>
+        <ul>
+            <li><strong>Reacher-v5</strong>:
+                <ul>
+                    <li><strong>PPO</strong>: Converged quickly to rewards around -5 with low variance, leveraging gradient-based updates for efficient learning.</li>
+                    <li><strong>CMA-ES</strong>: Improved gradually to rewards near -15, with higher variance across runs, but demonstrated robust exploration. See learning curves at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/cma_es_runs_separate.png">GitHub</a>.</li>
+                </ul>
+            </li>
+            <li><strong>Ant-v5</strong>:
+                <ul>
+                    <li><strong>PPO</strong>: Achieved rewards around 2000 by episode 1000, with consistent performance due to sample-efficient updates.</li>
+                    <li><strong>CMA-ES</strong>: Reached rewards near 1800 by generation 3000, with greater variability, suitable for high-dimensional tasks with tuned hyperparameters. See box plot at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/antBox.png">GitHub</a>.</li>
+                </ul>
+            </li>
+            <li><strong>HalfCheetah-v5</strong>:
+                <ul>
+                    <li><strong>PPO</strong>: Excelled with rewards of 5500–6000, converging rapidly due to effective gradient exploitation.</li>
+                    <li><strong>CMA-ES</strong>: Stabilized at 2500–3000, with broader reward distributions, viable for scenarios with limited gradient information. See comparison at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/ppo_vs_cma_es_different_x_axes.png">GitHub</a>.</li>
+                </ul>
+            </li>
+            <li><strong>InvertedDoublePendulum-v5</strong>:
+                <ul>
+                    <li><strong>PPO</strong>: Attained rewards around 9000 with low variance, mastering the unstable dynamics efficiently.</li>
+                    <li><strong>CMA-ES</strong>: Reached rewards near 6000, with higher variability, but competitive with further tuning. See solved state at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/vizz.png">GitHub</a>.</li>
+                </ul>
+            </li>
+        </ul>
+        <h3>Visualizations</h3>
+        <p>Rollout videos showcase the best PPO policies for each task, demonstrating smooth and efficient control:</p>
+        <div class="video-container">
+            <div class="video-item">
+                <video controls>
+                    <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/reacher.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Reacher-v5 (PPO)</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/Ant.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>Ant-v5 (PPO)</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/HalfCheetha.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>HalfCheetah-v5 (PPO)</p>
+            </div>
+            <div class="video-item">
+                <video controls>
+                    <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/IDP.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>InvertedDoublePendulum-v5 (PPO)</p>
+            </div>
+        </div>
+        <p>CMA-ES videos are available in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/tree/main/videos/cma_es">GitHub repository</a>.</p>
+        <h3>Key Takeaways</h3>
+        <ul>
+            <li><strong>PPO</strong>: Ideal for tasks with smooth reward landscapes, offering rapid convergence and high sample efficiency (e.g., 2.4M frames for Reacher-v5 vs. 830M for CMA-ES).</li>
+            <li><strong>CMA-ES</strong>: Excels in exploring complex or noisy reward structures, less sensitive to local optima, suitable for gradient-unavailable scenarios.</li>
+            <li><strong>Complementary Strengths</strong>: PPO’s gradient-based updates and CMA-ES’s population-based search suggest potential for hybrid methods to enhance robustness and efficiency.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Reproducibility</h2>
+        <p>The project is fully reproducible with:</p>
+        <ul>
+            <li><strong>Code</strong>: Python 3.8 scripts and Jupyter notebooks available in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">GitHub repository</a>.</li>
+            <li><strong>Dependencies</strong>: Listed in <code>requirements.txt</code>, including MuJoCo 3.2.6, Gymnasium, Stable-Baselines3, DEAP, NumPy, and Matplotlib.</li>
+            <li><strong>Configurations</strong>: YAML files for CMA-ES hyperparameters and Jupyter notebooks for PPO settings.</li>
+            <li><strong>Logs and Plots</strong>: CSV files for rewards and PNGs for learning curves, box plots, and solved states.</li>
+            <li><strong>Instructions</strong>: Detailed in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/README.md">README</a>.</li>
+        </ul>
+        <p>To run experiments:</p>
+        <pre><code>git clone https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo.git
+cd PPO-vs-CMAES-MuJoCo
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+cd code/ppo
+jupyter notebook</code></pre>
+    </section>
+    <section>
+        <h2>Future Work</h2>
+        <p>The complementary strengths of PPO and CMA-ES suggest promising research directions:</p>
+        <ul>
+            <li><strong>Hybrid Algorithms</strong>: Combine PPO’s policy gradients with CMA-ES’s population-based search to leverage rapid convergence and robust exploration.</li>
+            <li><strong>Multi-Agent Systems</strong>: Apply these methods to cooperative or competitive tasks in multi-agent environments.</li>
+            <li><strong>Real-World Applications</strong>: Test evolved policies in robotic control or autonomous systems for practical deployment.</li>
+            <li><strong>Robustness Testing</strong>: Evaluate CMA-ES’s performance under noisy reward conditions to confirm its resilience compared to PPO.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>This project provides a comprehensive comparison of PPO and CMA-ES in evolving continuous control policies for MuJoCo tasks. PPO excels in sample efficiency and stable convergence, particularly in tasks with clear gradient signals, while CMA-ES offers robust exploration in complex reward landscapes. By open-sourcing the code, results, and visualizations, I aim to contribute to the RL and evolutionary computation communities, encouraging further exploration of hybrid optimization strategies.</p>
+    </section>
+    <section>
+        <p><em>Released under the MIT License. Videos, code, and figures are available on <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">GitHub</a>.</em></p>
+    </section>
+    <footer>
+        <p>© 2025 Pawan Kumar. All rights reserved.</p>
+    </footer>
+</body>
+</html>

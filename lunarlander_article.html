@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Machine Theory of Mind in LunarLander-v3 - Pawan Kumar</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        nav {
+            background: #34495e;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        ul {
+            padding-left: 1.5rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #2c3e50;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .video-item {
+            flex: 1 1 45%;
+            max-width: 45%;
+            text-align: center;
+        }
+        .video-item p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            section {
+                padding: 1rem;
+            }
+            .video-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Machine Theory of Mind in LunarLander-v3: A Proof-of-Concept</h1>
+        <p>Pawan Kumar</p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="index.html">Back to Home</a></li>
+        </ul>
+    </nav>
+    <section>
+        <h2>Introduction</h2>
+        <p>Theory of Mind (ToM) enables humans to infer others' mental states, such as intentions and beliefs, facilitating social interactions. My project, "Machine Theory of Mind in LunarLander-v3: A Proof-of-Concept," investigates whether AI can exhibit implicit and explicit ToM in the LunarLander-v3 environment, a reinforcement learning (RL) task where an agent must land a spacecraft. Implicit ToM involves predicting actions based on observed behavior, while explicit ToM requires understanding false beliefs. Using ToMnet, a neural network, I achieved 44.92% action prediction accuracy and 45.48% accuracy in false-belief scenarios, demonstrating a proof-of-concept for machine ToM with potential to enhance trust in human-AI collaboration.</p>
+        <p><a href="https://github.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander">Explore the project on GitHub</a></p>
+    </section>
+    <section>
+        <h2>Objectives</h2>
+        <p>The project aimed to answer:</p>
+        <ul>
+            <li>Can AI demonstrate implicit ToM by predicting an agent’s actions in a continuous-state, discrete-action RL task?</li>
+            <li>Can AI exhibit explicit ToM by adapting to an agent’s false beliefs?</li>
+        </ul>
+        <p>Key objectives included:</p>
+        <ul>
+            <li>Developing a ToMnet model to predict PPO agent actions in LunarLander-v3.</li>
+            <li>Simulating false beliefs to test explicit ToM.</li>
+            <li>Analyzing prediction diversity and accuracy to validate machine ToM.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Methodology</h2>
+        <h3>Environment</h3>
+        <p>The LunarLander-v3 environment from Gymnasium involves landing a spacecraft on a helipad using four discrete actions: do nothing, fire left engine, fire main engine, or fire right engine. The 8-dimensional observation space includes position, velocity, and orientation.</p>
+        <h3>Implementation</h3>
+        <ul>
+            <li><strong>PPO Agent</strong>: Trained using Stable Baselines3 for 8 million timesteps, achieving rewards above 200 and steps below 100, providing a reliable baseline.</li>
+            <li><strong>ToMnet</strong>: Implemented in PyTorch with Character Net (LSTM for long-term patterns), Mental Net (LSTM for short-term intent), and Prediction Net (action probabilities). Trained for 150 epochs with class weights to handle action imbalance.</li>
+            <li><strong>False Belief Simulation</strong>: Shifted the landing spot by 0.2 units in query observations to test explicit ToM.</li>
+        </ul>
+        <h3>Evaluation</h3>
+        <ul>
+            <li>Collected 10,000 trajectories (9,995 valid) with actions: 0 (8519), 1 (455), 2 (145), 3 (876).</li>
+            <li>Measured prediction accuracy, diversity, and adaptation to false beliefs using confusion matrices, heatmaps, and time series plots.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Results</h2>
+        <h3>Implicit ToM</h3>
+        <p>ToMnet achieved 44.92% overall accuracy (4490/9995), predicting diverse actions despite the imbalance (action 0 dominated). Visualizations included:</p>
+        <ul>
+            <li><strong>Confusion Matrix</strong>: Showed correct predictions (e.g., 3498 for action 0) and errors due to imbalance.</li>
+            <li><strong>Heatmap</strong>: Displayed varied prediction probabilities across trajectories.</li>
+            <li><strong>Time Series</strong>: Tracked dynamic action probabilities over a trajectory, confirming intent understanding.</li>
+        </ul>
+        <div class="video-container">
+            <div class="video-item">
+                <video controls>
+                    <source src="https://raw.githubusercontent.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander/main/results/videos/PPO_LunarLanderCustom_full.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <p>LunarLander-v3 (PPO)</p>
+            </div>
+        </div>
+        <p><a href="https://raw.githubusercontent.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander/main/results/videos/PPO_LunarLanderCustom_full.mp4">View the LunarLander-v3 video</a></p>
+        <h3>Explicit ToM</h3>
+        <p>ToMnet adapted to a simulated false belief (shifted landing spot), achieving 45.48% decoy accuracy versus 44.37% normal accuracy, a 1.11% increase, supporting explicit ToM.</p>
+        <h3>Key Takeaways</h3>
+        <ul>
+            <li>ToMnet demonstrates implicit ToM by predicting diverse actions, understanding PPO’s intent.</li>
+            <li>Explicit ToM is shown through modest adaptation to false beliefs, modeling incorrect agent beliefs.</li>
+            <li>The proof-of-concept suggests applications in human-robot interaction and gaming.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Reproducibility</h2>
+        <p>The project is reproducible with:</p>
+        <ul>
+            <li><strong>Code</strong>: Python 3.8 scripts in the GitHub repository.</li>
+            <li><strong>Dependencies</strong>: Gymnasium, Stable Baselines3, PyTorch (see <code>requirements.txt</code>).</li>
+            <li><strong>Data</strong>: 10,000 trajectories and analysis scripts.</li>
+            <li><strong>Instructions</strong>: Detailed in the <a href="https://github.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander/blob/main/README.md">README</a>.</li>
+        </ul>
+        <p>To run experiments:</p>
+        <pre><code>git clone https://github.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander.git
+cd HCAI-theory-of-mind-gymnasium-lunar-lander
+python -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python run_agents.py</code></pre>
+    </section>
+    <section>
+        <h2>Future Work</h2>
+        <p>Future directions include:</p>
+        <ul>
+            <li>Train PPO with a true decoy helipad for robust explicit ToM.</li>
+            <li>Balance action distribution using oversampling.</li>
+            <li>Increase ToMnet capacity for complex behaviors.</li>
+            <li>Extend to multi-agent scenarios for collaborative tasks.</li>
+        </ul>
+    </section>
+    <section>
+        <h2>Conclusion</h2>
+        <p>This project establishes a proof-of-concept for machine ToM in a continuous-state, discrete-action RL task, with implications for enhancing human-AI collaboration in autonomous systems and interactive applications.</p>
+        <p><em>Citation</em>: Pawan Kumar (2025). Machine Theory of Mind in LunarLander-v3: A Proof-of-Concept. GitHub. <a href="https://github.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander">https://github.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander</a></p>
+    </section>
+    <section>
+        <p><em>Released under the MIT License. Code and video are available on <a href="https://github.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander">GitHub</a>.</em></p>
+    </section>
+    <footer>
+        <p>© 2025 Pawan Kumar. All rights reserved.</p>
+    </footer>
+</body>
+</html>

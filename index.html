@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawan Kumar - Personal Website</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+        }
+        header {
+            background: url('images/mcmaster_hero_image.jpg') no-repeat center center/cover;
+            color: #fff;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            z-index: 1;
+        }
+        header > * {
+            position: relative;
+            z-index: 2;
+        }
+        header img.profile-pic {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 3px solid #fff;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        header p {
+            margin: 0.5rem 0;
+            font-size: 1.2rem;
+        }
+        nav {
+            background: #34495e;
+            padding: 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        nav ul li {
+            margin: 0 1rem;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            color: #3498db;
+        }
+        section {
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        section h2 {
+            color: #2c3e50;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        ul {
+            padding-left: 1.5rem;
+        }
+        ul li {
+            margin-bottom: 0.5rem;
+        }
+        .experience, .project, .education {
+            margin-bottom: 1.5rem;
+        }
+        .experience h3, .project h3, .education h3 {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #2c3e50;
+        }
+        .experience p, .project p, .education p {
+            margin: 0.2rem 0;
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #2c3e50;
+            color: #fff;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        video {
+            max-width: 100%;
+            height: auto;
+            margin: 1rem 0;
+            border-radius: 8px;
+        }
+        .video-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        .video-item {
+            flex: 1 1 45%;
+            max-width: 45%;
+            text-align: center;
+        }
+        .video-item p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            color: #2c3e50;
+        }
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 0.5rem 0;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            header img.profile-pic {
+                width: 100px;
+                height: 100px;
+            }
+            section {
+                padding: 1rem;
+            }
+            .video-item {
+                flex: 1 1 100%;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/background.PNG" alt="Pawan Kumar Profile Photo" class="profile-pic">
+        <h1>Pawan Kumar</h1>
+        <p>Master of Engineering Candidate | Software Developer | AI & DevOps Specialist</p>
+        <p>Email: krpawan09001@gmail.com | <a href="https://github.com/PawanKumarrr" style="color: #fff;">GitHub</a> | <a href="https://linkedin.com/in/pawankumar" style="color: #fff;">LinkedIn</a></p>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#summary">Summary</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
+        </ul>
+    </nav>
+    <section id="summary">
+        <h2>Professional Summary</h2>
+        <ul>
+            <li>Master of Engineering candidate in Computing and Software at McMaster University, specializing in software development, DevOps, and artificial intelligence.</li>
+            <li>Expertise in building scalable microservices architectures, cloud computing solutions, and agile development, with a focus on secure and efficient software systems.</li>
+            <li>Proficient in processing large-scale data, managing distributed systems, orchestrating containers with Docker and Kubernetes, and implementing CI/CD pipelines for high-performance computing environments.</li>
+            <li>Advanced skills in machine learning, deep learning, Transformer architectures, Large Language Models, prompt engineering, and neural network optimization using PyTorch and TensorFlow frameworks.</li>
+        </ul>
+    </section>
+    <section id="education">
+        <h2>Education</h2>
+        <div class="education">
+            <h3>Master of Engineering in Computing and Software</h3>
+            <p>McMaster University, Hamilton, ON | Sep 2023 – May 2025</p>
+            <p>Relevant Courses: Data Structures and Algorithms, Software Design, Evolutionary Computation, Deep Learning, Machine Learning, Human-Centered Artificial Intelligence</p>
+            <p>GPA: 3.92/4.0</p>
+        </div>
+        <div class="education">
+            <h3>B.Tech., Electronics and Communication Engineering</h3>
+            <p>Guru Gobind Singh Indraprastha University, Delhi, India | Aug 2019 – May 2023</p>
+            <p>CGPA: 8.34/10.0, Department Rank: 07/208</p>
+        </div>
+    </section>
+    <section id="experience">
+        <h2>Professional Experience</h2>
+        <div class="experience">
+            <h3>Software Developer Co-op, Ericsson</h3>
+            <p>Mississauga, Ontario, Canada | Apr 2024 – Dec 2024</p>
+            <ul>
+                <li>Designed automation solutions to integrate disparate API data sources, enhancing workflow efficiency in an Agile software development environment using DevOps practices.</li>
+                <li>Engineered Jenkins pipelines and Docker scripts to streamline CI/CD processes, job scheduling, and automated testing for microservices-based applications.</li>
+                <li>Led migration to microservices architecture and implemented DevSecOps practices, embedding security test automation to ensure robust application development.</li>
+            </ul>
+        </div>
+        <div class="experience">
+            <h3>Software Developer Intern, PaisaBazaar Marketing and Consulting</h3>
+            <p>New Delhi, India | Feb 2023 – May 2023</p>
+            <ul>
+                <li>Optimized large-scale data orchestration for a $6B+ valuation fintech platform, improving system performance and scalability using AWS cloud infrastructure.</li>
+                <li>Developed a customer and store data management platform with Spring Boot, boosting sales agents' efficiency and lead conversion rates in a cloud-based environment.</li>
+                <li>Streamlined software deployments using CI/CD pipelines with Git, GitHub, and Docker, enhancing development agility and system reliability.</li>
+            </ul>
+        </div>
+        <div class="experience">
+            <h3>Teaching Assistant - DSA, PepCoding Education (OPC) Pvt. Ltd.</h3>
+            <p>Noida, India | Jan 2022 – Apr 2022</p>
+            <ul>
+                <li>Mentored students in Data Structures and Algorithms, guiding them through complexity analysis, object-oriented programming, and coding interview preparation.</li>
+                <li>Facilitated large-scale doubt-clearing sessions for 50+ students, providing advanced debugging techniques and problem-solving strategies for algorithmic challenges.</li>
+            </ul>
+        </div>
+    </section>
+    <section id="projects">
+        <h2>Technical Projects</h2>
+        <div class="project">
+            <h3><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">Evolving Continuous Control Policies through Comparative Neuroevolution</a></h3>
+            <p><a href="article.html">Read the full article</a></p>
+            <ul>
+                <li>Conducted Comparative Analysis of Reinforcement Learning and Evolutionary Algorithms: Designed and implemented a rigorous evaluation of Proximal Policy Optimization (PPO) and Covariance Matrix Adaptation Evolution Strategy (CMA-ES) for continuous control tasks in MuJoCo environments.</li>
+                <li>Developed Custom Frameworks for Policy Optimization: Built a custom CMA-ES framework using DEAP and adapted stable-baselines3 for PPO, optimizing neural network policies.</li>
+                <li>Contributed Novel Insights for Hybrid Optimization Strategies: Identified complementary strengths of gradient-based (PPO) and gradient-free (CMA-ES) methods, published in a peer-reviewed ACM conference proceeding.</li>
+            </ul>
+        </div>
+        <div class="project">
+            <h3><a href="https://github.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander">Machine Theory of Mind in LunarLander-v3: A Proof-of-Concept</a></h3>
+            <p><a href="lunarlander_article.html">Read the full article</a></p>
+            <ul>
+                <li>Developed and Implemented Machine Theory of Mind (ToM) in AI: Designed and trained a neural network (ToMnet) to demonstrate implicit and explicit Theory of Mind in the LunarLander-v3 environment.</li>
+                <li>Applied Advanced Reinforcement Learning Techniques: Trained a PPO agent using Stable Baselines3 for 8 million timesteps, achieving high rewards.</li>
+                <li>Conducted Rigorous Experimentation and Analysis: Utilized PyTorch and Gymnasium to collect and analyze 10,000 trajectories, contributing to a proof-of-concept for machine ToM.</li>
+            </ul>
+        </div>
+        <div class="project">
+            <h3><a href="https://github.com/PawanKumarrr/ICS-Helper">ICS Helper</a></h3>
+            <ul>
+                <li>Engineered a domain-specific language using Java, Eclipse IDE, Xtext Framework, and Gradle to create and manipulate ICS calendar files with intuitive syntax.</li>
+                <li>Implemented advanced features like event splitting, merging, programmable access, and subscriber list control for efficient calendar automation.</li>
+            </ul>
+        </div>
+        <div class="project">
+            <h3><a href="https://github.com/PawanKumarrr/Optimization-Unleashed-A-Profound-Analysis-of-CMA-ES-and-MPA-in-Neural-Network-Evolutionr">Optimization-Unleashed</a></h3>
+            <ul>
+                <li>Evaluated Covariance Matrix Adaptation Evolution Strategy and Marine Predators Algorithm on benchmark functions to optimize neural network architectures.</li>
+                <li>Applied neuroevolution techniques to enhance machine learning model performance for complex tasks.</li>
+            </ul>
+        </div>
+        <div class="project">
+            <h3><a href="https://github.com/PawanKumarrr/GPT2-and-VIT">Vision-GPT2 for Image Captioning</a></h3>
+            <ul>
+                <li>Integrated Vision Transformers and GPT-2 using PyTorch and Albumentations to develop a multi-modal deep learning model for generating image captions.</li>
+                <li>Trained on the Flickr8K dataset, achieving state-of-the-art performance with reduced perplexity.</li>
+            </ul>
+        </div>
+    </section>
+    <section id="publications">
+        <h2>Publications</h2>
+        <ul>
+            <li>Pawan Kumar, Prabhat Kumar Singh, Vaibhav Nijhawan, Harsh Khanna. <a href="https://link.springer.com/chapter/10.1007/978-981-99-3033-3_39">Design and Implementation of a Gesture-Controlled Car with Arduino Nano Board</a>. Frame, 2022.</li>
+            <li>Prabhat Kumar Singh, Pawan Kumar, Abshar Imam. <a href="https://ijisrt.com/creation-of-an-android-application-and-the-use-of-transfer-learning-to-recognize-insect-species">Creation of an Android Application and Use of Transfer Learning to Recognize Insect Species</a>. IJISRT, 2021.</li>
+        </ul>
+    </section>
+    <section id="skills">
+        <h2>Technical Skills</h2>
+        <ul>
+            <li><strong>Programming Languages</strong>: Java, Python, C++, JavaScript, TypeScript, HTML, CSS, SQL, Bash</li>
+            <li><strong>DevOps & Cloud Technologies</strong>: AWS (EC2, S3, Lambda), Google Cloud Platform, Azure, Docker, Kubernetes, Helm, Terraform, Jenkins, Git, GitHub, CI/CD Pipelines</li>
+            <li><strong>Data Science & Machine Learning</strong>: Python (NumPy, Pandas, Matplotlib, Seaborn), PyTorch, TensorFlow, Keras, Scikit-learn, OpenCV, XGBoost, LightGBM, Recurrent Neural Networks, Transformer Architectures, GPT, BERT, Large Language Models, Prompt Engineering</li>
+            <li><strong>Reinforcement Learning</strong>: OpenAI Gym, MuJoCo, Gymnasium, Covariance Matrix Adaptation Evolution Strategy, Proximal Policy Optimization, Evolutionary Computation, Multi-Agent Systems, Neuroevolution</li>
+            <li><strong>Tools & Technologies</strong>: Visual Studio, IntelliJ IDEA, Gradle, Maven, Site Reliability Engineering, Model Deployment, Data Pipelines, Logging/Monitoring (ELK Stack, Grafana), High-Performance Computing, GPU Clusters</li>
+        </ul>
+    </section>
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li>AWS Certified Machine Learning Specialty – Hands-On! (May 2024)</li>
+            <li>PyTorch for Deep Learning Bootcamp (May 2024)</li>
+        </ul>
+    </section>
+    <footer>
+        <p>© 2025 Pawan Kumar. All rights reserved.</p>
+    </footer>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href').substring(1);
+                document.getElementById(sectionId).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
