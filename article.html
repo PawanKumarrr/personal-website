@@ -132,7 +132,7 @@
 </head>
 <body>
     <header>
-        <h1>Comparative Neuroevolution: PPO vs. CMA-ES</h1>
+        <h1>Teaching Machines to Move: Comparing Two AI Learning Methods</h1>
         <p>Pawan Kumar</p>
     </header>
     <nav>
@@ -142,124 +142,130 @@
     </nav>
     <section>
         <h2>Introduction</h2>
-        <p>My project, "Evolving Continuous Control Policies through Comparative Neuroevolution," compares two powerful optimization approaches for developing control policies in reinforcement learning (RL): <strong>Proximal Policy Optimization (PPO)</strong>, a gradient-based RL algorithm, and <strong>Covariance Matrix Adaptation Evolution Strategy (CMA-ES)</strong>, a gradient-free evolutionary method. Conducted in the MuJoCo physics simulation environment, this study evaluates their performance across four continuous-control tasks: <strong>Reacher-v5</strong>, <strong>Ant-v5</strong>, <strong>HalfCheetah-v5</strong>, and <strong>InvertedDoublePendulum-v5</strong>. PPO leverages backpropagation for rapid convergence in high-dimensional tasks, while CMA-ES optimizes neural network parameters without gradients, enabling robust exploration of complex solution spaces. The comparison highlights their complementary strengths, offering insights into their applicability and potential for hybrid optimization strategies.</p>
+        <p>Imagine teaching a robot to move like a human—whether it’s a robotic arm reaching for an object or a legged robot walking across a room. My project, "Teaching Machines to Move," explores two ways to train artificial intelligence (AI) to control such movements in a simulated world called MuJoCo, where robots tackle tasks like reaching, walking, running, or balancing. The two methods are <strong>Proximal Policy Optimization (PPO)</strong>, which learns by fine-tuning its actions step-by-step, like practicing a skill with feedback, and <strong>Covariance Matrix Adaptation Evolution Strategy (CMA-ES)</strong>, which mimics evolution by testing many solutions and keeping the best ones, like nature selecting the strongest traits. By comparing these methods, I discovered how each excels in different scenarios, offering ideas for building smarter robots in fields like manufacturing, healthcare, or self-driving vehicles.</p>
         <p><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">Explore the project on GitHub</a></p>
     </section>
     <section>
-        <h2>Objectives</h2>
-        <p>The primary goal was to benchmark PPO and CMA-ES to understand their effectiveness in evolving neural network policies for continuous control tasks. Specific objectives included:</p>
+        <h2>Why This Matters</h2>
+        <p>The goal was to find out which method teaches robots better and faster, much like choosing the best way to learn a new sport. I tested PPO and CMA-ES on four tasks in MuJoCo:</p>
         <ul>
-            <li>Evaluating <strong>sample efficiency</strong> (how quickly an algorithm learns) and <strong>final performance</strong> (quality of the learned policy).</li>
-            <li>Comparing PPO's rapid convergence with CMA-ES's ability to explore rugged reward landscapes and avoid local optima.</li>
-            <li>Developing reproducible frameworks for both algorithms to support further research.</li>
-            <li>Identifying complementary strengths to propose hybrid optimization approaches combining gradient-based and evolutionary strategies.</li>
+            <li><strong>Reacher</strong>: A robotic arm trying to touch a moving target, like playing a game of tag.</li>
+            <li><strong>Ant</strong>: A four-legged robot learning to walk, similar to a puppy finding its balance.</li>
+            <li><strong>HalfCheetah</strong>: A robot running forward, like a sprinter racing down a track.</li>
+            <li><strong>InvertedDoublePendulum</strong>: A pole on a cart staying upright, like balancing a broom on your finger.</li>
+        </ul>
+        <p>I wanted to see how quickly each method learns (like mastering a skill) and how well the robots perform (like winning a game). This could help create robots that adapt to real-world challenges, such as navigating a factory or assisting in surgeries.</p>
+    </section>
+    <section>
+        <h2>What If: A New Way to Train Robots?</h2>
+        <p>What if we combined the strengths of PPO and CMA-ES to create robots that learn quickly <em>and</em> adapt to unexpected changes, like a delivery drone dodging obstacles in a storm? PPO is great at learning fast when the path is clear, like following a recipe. CMA-ES is better at exploring new possibilities, like experimenting with ingredients when the recipe fails. A hybrid approach could train robots to handle complex, unpredictable environments—think of self-driving cars navigating busy streets or robotic arms assembling products in a dynamic factory. This could spark new AI startups focused on adaptive robotics, transforming industries with machines that learn smarter and faster.</p>
+    </section>
+    <section>
+        <h2>How It Worked</h2>
+        <h3>The Testing Ground</h3>
+        <p>MuJoCo is a virtual playground where robots practice tasks. Each task has specific challenges:</p>
+        <ul>
+            <li><strong>Reacher</strong>: The arm adjusts two joints to chase a target in a 2D space, with longer practice sessions to perfect its aim.</li>
+            <li><strong>Ant</strong>: The robot coordinates eight joints to walk steadily in 3D, balancing speed and stability.</li>
+            <li><strong>HalfCheetah</strong>: The robot uses six joints to run fast, rewarded for speed but penalized for wasteful moves.</li>
+            <li><strong>InvertedDoublePendulum</strong>: The cart adjusts one force to keep a double pole upright, a tricky balancing act.</li>
+        </ul>
+        <h3>Training the AI</h3>
+        <p>I used two approaches to train the AI:</p>
+        <ul>
+            <li><strong>PPO</strong>: Built with Stable-Baselines3, PPO learns by tweaking a neural network (like a brain) based on feedback, using settings like a learning speed of 0.0003 and practicing in 4–12 virtual worlds at once. It’s like a coach giving precise tips after each try.</li>
+            <li><strong>CMA-ES</strong>: Created with DEAP, CMA-ES tests many “robot brains” at once, keeping the best performers and tweaking others, like breeding stronger plants. I used groups of 10–50 robots and ran up to 3000 rounds of tests.</li>
+        </ul>
+        <p>Both methods ran on a powerful computer cluster, ensuring fair and repeatable results. I tracked their progress with data logs and videos to see how the robots moved.</p>
+        <h3>Measuring Success</h3>
+        <p>I judged the methods by:</p>
+        <ul>
+            <li><strong>Score</strong>: How much reward the robot earned, like points in a game, averaged over 15–20 test runs.</li>
+            <li><strong>Learning Speed</strong>: How fast the robot improved, shown in graphs.</li>
+            <li><strong>Consistency</strong>: How steady the results were, using box plots to show score ranges.</li>
+            <li><strong>Videos</strong>: Visual proof of the robots’ skills, like watching a performance.</li>
         </ul>
     </section>
     <section>
-        <h2>Methodology</h2>
-        <h3>Environments</h3>
-        <p>The MuJoCo environments tested were:</p>
+        <h2>What I Found</h2>
+        <p>Each method shone in different ways across the tasks:</p>
         <ul>
-            <li><strong>Reacher-v5</strong>: A two-link robotic arm reaching for a randomly located target in a 2D plane, with a 10-dimensional observation space and 2-dimensional action space. Episode length was extended from 50 to 200 timesteps, and the control penalty was set to zero to focus on minimizing target distance.</li>
-            <li><strong>Ant-v5</strong>: A quadrupedal robot learning to walk in a 3D space, with a 105-dimensional observation space and 8-dimensional action space, using a reward function balancing forward movement, stability, and control costs.</li>
-            <li><strong>HalfCheetah-v5</strong>: A two-dimensional robot running forward, with a 17-dimensional observation space and 6-dimensional action space, rewarded for forward velocity with a control cost penalty.</li>
-            <li><strong>InvertedDoublePendulum-v5</strong>: A two-link pendulum on a cart balanced upright, with a 9-dimensional observation space and 1-dimensional action space, rewarded for maintaining an upright position with penalties for displacement and velocity.</li>
-        </ul>
-        <h3>Implementation</h3>
-        <ul>
-            <li><strong>PPO</strong>: Implemented using the Stable-Baselines3 library with a multilayer perceptron (MLP) policy (two hidden layers of 64 or 32 units, ReLU activations). Hyperparameters included a learning rate of 3e-4, batch size of 256, and clipping parameter of 0.2. Training used 4–12 parallel environments with up to 5 million timesteps, logging episodic returns to CSV files. Plots were generated using Matplotlib.</li>
-            <li><strong>CMA-ES</strong>: Built a custom framework using the DEAP library, with feedforward neural networks (1–2 hidden layers, e.g., [8] for Reacher-v5, [32, 16] for Ant-v5). Population sizes ranged from 10–50, with step-sizes (σ) from 0.01–0.4, and up to 3000 generations. Parallel evaluations used Python’s multiprocessing Pool, with 5–50 episodes per candidate. Checkpoints saved the best parameters, and logs tracked returns in CSV format.</li>
-            <li><strong>Training Setup</strong>: Both methods were evaluated on a high-performance computing cluster using Slurm, with unique random seeds for reproducibility. PPO collected rollouts in parallel, updating policies with mini-batches, while CMA-ES sampled populations and adapted the covariance matrix based on ranked fitness.</li>
-        </ul>
-        <h3>Evaluation</h3>
-        <p>Performance was assessed by:</p>
-        <ul>
-            <li><strong>Average return</strong>: Cumulative rewards over 15–20 test episodes with fixed seeds.</li>
-            <li><strong>Learning curves</strong>: Plotted to compare convergence speed and stability across seeds.</li>
-            <li><strong>Final performance</strong>: Box plots of reward distributions to evaluate consistency.</li>
-            <li><strong>Rollout videos</strong>: Visualized policy behavior for qualitative analysis (see below).</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Results</h2>
-        <p>The study revealed distinct strengths for PPO and CMA-ES across the four MuJoCo tasks:</p>
-        <ul>
-            <li><strong>Reacher-v5</strong>:
+            <li><strong>Reacher</strong>:
                 <ul>
-                    <li><strong>PPO</strong>: Converged quickly to rewards around -5 with low variance, leveraging gradient-based updates for efficient learning.</li>
-                    <li><strong>CMA-ES</strong>: Improved gradually to rewards near -15, with higher variance across runs, but demonstrated robust exploration. See learning curves at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/cma_es_runs_separate.png">GitHub</a>.</li>
+                    <li><strong>PPO</strong>: Learned quickly, scoring around -5 (close to the target), like hitting the bullseye reliably.</li>
+                    <li><strong>CMA-ES</strong>: Scored around -15, improving slowly but exploring widely, like trying many paths to find a good one. See graphs at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/cma_es_runs_separate.png">GitHub</a>.</li>
                 </ul>
             </li>
-            <li><strong>Ant-v5</strong>:
+            <li><strong>Ant</strong>:
                 <ul>
-                    <li><strong>PPO</strong>: Achieved rewards around 2000 by episode 1000, with consistent performance due to sample-efficient updates.</li>
-                    <li><strong>CMA-ES</strong>: Reached rewards near 1800 by generation 3000, with greater variability, suitable for high-dimensional tasks with tuned hyperparameters. See box plot at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/antBox.png">GitHub</a>.</li>
+                    <li><strong>PPO</strong>: Reached a score of 2000 fast, walking steadily, like a pro athlete.</li>
+                    <li><strong>CMA-ES</strong>: Scored near 1800 after more time, with varied results, like a team still practicing. See box plot at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/antBox.png">GitHub</a>.</li>
                 </ul>
             </li>
-            <li><strong>HalfCheetah-v5</strong>:
+            <li><strong>HalfCheetah</strong>:
                 <ul>
-                    <li><strong>PPO</strong>: Excelled with rewards of 5500–6000, converging rapidly due to effective gradient exploitation.</li>
-                    <li><strong>CMA-ES</strong>: Stabilized at 2500–3000, with broader reward distributions, viable for scenarios with limited gradient information. See comparison at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/ppo_vs_cma_es_different_x_axes.png">GitHub</a>.</li>
+                    <li><strong>PPO</strong>: Zoomed to 5500–6000, running smoothly, like a champion runner.</li>
+                    <li><strong>CMA-ES</strong>: Hit 2500–3000, solid but less speedy, like a strong jogger. See comparison at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/ppo_vs_cma_es_different_x_axes.png">GitHub</a>.</li>
                 </ul>
             </li>
-            <li><strong>InvertedDoublePendulum-v5</strong>:
+            <li><strong>InvertedDoublePendulum</strong>:
                 <ul>
-                    <li><strong>PPO</strong>: Attained rewards around 9000 with low variance, mastering the unstable dynamics efficiently.</li>
-                    <li><strong>CMA-ES</strong>: Reached rewards near 6000, with higher variability, but competitive with further tuning. See solved state at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/vizz.png">GitHub</a>.</li>
+                    <li><strong>PPO</strong>: Mastered balancing at 9000, steady as a tightrope walker.</li>
+                    <li><strong>CMA-ES</strong>: Reached 6000, good but less consistent, like balancing with some wobbles. See success at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/vizz.png">GitHub</a>.</li>
                 </ul>
             </li>
         </ul>
-        <h3>Visualizations</h3>
-        <p>Rollout videos showcase the best PPO policies for each task, demonstrating smooth and efficient control:</p>
+        <h3>Watch the Robots in Action</h3>
+        <p>These videos show PPO-trained robots performing each task smoothly:</p>
         <div class="video-container">
             <div class="video-item">
                 <video controls>
                     <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/reacher.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p>Reacher-v5 (PPO)</p>
+                <p>Reacher (PPO)</p>
             </div>
             <div class="video-item">
                 <video controls>
                     <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/Ant.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p>Ant-v5 (PPO)</p>
+                <p>Ant (PPO)</p>
             </div>
             <div class="video-item">
                 <video controls>
                     <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/HalfCheetha.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p>HalfCheetah-v5 (PPO)</p>
+                <p>HalfCheetah (PPO)</p>
             </div>
             <div class="video-item">
                 <video controls>
                     <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/IDP.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
-                <p>InvertedDoublePendulum-v5 (PPO)</p>
+                <p>InvertedDoublePendulum (PPO)</p>
             </div>
         </div>
         <p>CMA-ES videos are available in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/tree/main/videos/cma_es">GitHub repository</a>.</p>
-        <h3>Key Takeaways</h3>
+        <h3>Key Lessons</h3>
         <ul>
-            <li><strong>PPO</strong>: Ideal for tasks with smooth reward landscapes, offering rapid convergence and high sample efficiency (e.g., 2.4M frames for Reacher-v5 vs. 830M for CMA-ES).</li>
-            <li><strong>CMA-ES</strong>: Excels in exploring complex or noisy reward structures, less sensitive to local optima, suitable for gradient-unavailable scenarios.</li>
-            <li><strong>Complementary Strengths</strong>: PPO’s gradient-based updates and CMA-ES’s population-based search suggest potential for hybrid methods to enhance robustness and efficiency.</li>
+            <li><strong>PPO</strong>: Learns fast and performs best when tasks have clear feedback, like following a map. It needed fewer tries (e.g., 2.4 million steps for Reacher) to excel.</li>
+            <li><strong>CMA-ES</strong>: Explores broadly, great for tricky tasks where feedback is unclear, like finding a path in fog. It took more tries (e.g., 830 million steps for Reacher) but could handle surprises better.</li>
+            <li><strong>Teamwork Potential</strong>: Combining PPO’s speed with CMA-ES’s exploration could create super-smart robots, like a student who studies fast but also thinks outside the box.</li>
         </ul>
     </section>
     <section>
-        <h2>Reproducibility</h2>
-        <p>The project is fully reproducible with:</p>
+        <h2>Try It Yourself</h2>
+        <p>Anyone can recreate this project with:</p>
         <ul>
-            <li><strong>Code</strong>: Python 3.8 scripts and Jupyter notebooks available in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">GitHub repository</a>.</li>
-            <li><strong>Dependencies</strong>: Listed in <code>requirements.txt</code>, including MuJoCo 3.2.6, Gymnasium, Stable-Baselines3, DEAP, NumPy, and Matplotlib.</li>
-            <li><strong>Configurations</strong>: YAML files for CMA-ES hyperparameters and Jupyter notebooks for PPO settings.</li>
-            <li><strong>Logs and Plots</strong>: CSV files for rewards and PNGs for learning curves, box plots, and solved states.</li>
-            <li><strong>Instructions</strong>: Detailed in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/README.md">README</a>.</li>
+            <li><strong>Code</strong>: Python scripts and notebooks on <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">GitHub</a>.</li>
+            <li><strong>Tools</strong>: Listed in <code>requirements.txt</code>, including MuJoCo, Stable-Baselines3, and DEAP.</li>
+            <li><strong>Settings</strong>: Files for CMA-ES and PPO configurations.</li>
+            <li><strong>Results</strong>: Data logs and graphs for scores and visuals.</li>
+            <li><strong>Guide</strong>: Step-by-step instructions in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/README.md">README</a>.</li>
         </ul>
-        <p>To run experiments:</p>
+        <p>Run it with these commands:</p>
         <pre><code>git clone https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo.git
 cd PPO-vs-CMAES-MuJoCo
 python -m venv venv
@@ -269,18 +275,18 @@ cd code/ppo
 jupyter notebook</code></pre>
     </section>
     <section>
-        <h2>Future Work</h2>
-        <p>The complementary strengths of PPO and CMA-ES suggest promising research directions:</p>
+        <h2>What's Next?</h2>
+        <p>This project opens doors to exciting possibilities:</p>
         <ul>
-            <li><strong>Hybrid Algorithms</strong>: Combine PPO’s policy gradients with CMA-ES’s population-based search to leverage rapid convergence and robust exploration.</li>
-            <li><strong>Multi-Agent Systems</strong>: Apply these methods to cooperative or competitive tasks in multi-agent environments.</li>
-            <li><strong>Real-World Applications</strong>: Test evolved policies in robotic control or autonomous systems for practical deployment.</li>
-            <li><strong>Robustness Testing</strong>: Evaluate CMA-ES’s performance under noisy reward conditions to confirm its resilience compared to PPO.</li>
+            <li><strong>Smarter Hybrids</strong>: Mix PPO and CMA-ES to build robots that learn fast and adapt to surprises, like a self-driving car handling sudden road changes.</li>
+            <li><strong>Teamwork</strong>: Train multiple robots to work together, like a swarm of drones delivering packages.</li>
+            <li><strong>Real-World Impact</strong>: Use these methods for robots in factories, hospitals, or space exploration.</li>
+            <li><strong>Tough Tests</strong>: Check if CMA-ES handles messy feedback better than PPO, like navigating a noisy sensor.</li>
         </ul>
     </section>
     <section>
-        <h2>Conclusion</h2>
-        <p>This project provides a comprehensive comparison of PPO and CMA-ES in evolving continuous control policies for MuJoCo tasks. PPO excels in sample efficiency and stable convergence, particularly in tasks with clear gradient signals, while CMA-ES offers robust exploration in complex reward landscapes. By open-sourcing the code, results, and visualizations, I aim to contribute to the RL and evolutionary computation communities, encouraging further exploration of hybrid optimization strategies.</p>
+        <h2>Wrapping Up</h2>
+        <p>My project shows how two AI methods—PPO and CMA-ES—teach robots to move in different ways. PPO is like a quick learner with clear instructions, while CMA-ES is a creative explorer finding new paths. By sharing my code and results, I hope to inspire others to build better AI for robots that can help in everyday life, from assembling products to exploring distant planets.</p>
     </section>
     <section>
         <p><em>Released under the MIT License. Videos, code, and figures are available on <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">GitHub</a>.</em></p>
