@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pawan Kumar - Personal Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -27,7 +28,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+            background: rgba(0, 0, 0, 0.8);
             z-index: 1;
         }
         header > * {
@@ -49,6 +50,60 @@
         header p {
             margin: 0.5rem 0;
             font-size: 1.2rem;
+        }
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        .social-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.3rem;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            transition: transform 0.3s;
+        }
+        .social-links a:hover {
+            transform: scale(1.1);
+        }
+        .social-links .email { color: #ea4335; }
+        .social-links .github { color: #ffffff !important; } /* Changed to white to match ResearchGate */
+        .social-links .linkedin { color: #0077b5; }
+        .social-links .researchgate { color: #ffffff !important; } /* Kept white as requested */
+        .social-links .leetcode { color: #f7a41d; }
+        .social-links .lab { color: #6b48ff; }
+        .cv-link {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 3;
+        }
+        .cv-link a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-decoration: none;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 0.4rem 0.6rem;
+            border-radius: 6px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            transition: color 0.3s, transform 0.3s;
+        }
+        .cv-link a:hover {
+            color: #3498db;
+            transform: scale(1.2);
         }
         nav {
             background: #34495e;
@@ -171,15 +226,47 @@
                 flex: 1 1 100%;
                 max-width: 100%;
             }
+            .social-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+            .cv-link {
+                top: 0.5rem;
+                right: 0.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
+        <div class="cv-link">
+            <a href="https://drive.google.com/file/d/1OVDVU8ZDbgiDSAIzd1Ow6uG8AS2nzsqM/view?usp=sharing" target="_blank" title="Download CV">
+                <i class="fas fa-file-pdf"></i> Download CV
+            </a>
+        </div>
         <img src="images/background.PNG" alt="Pawan Kumar Profile Photo" class="profile-pic">
         <h1>Pawan Kumar</h1>
         <p>Master of Engineering Candidate | Software Developer | AI & DevOps Specialist</p>
-        <p>Email: krpawan09001@gmail.com | <a href="https://github.com/PawanKumarrr" style="color: #fff;">GitHub</a> | <a href="https://linkedin.com/in/pawankumar" style="color: #fff;">LinkedIn</a></p>
+        <div class="social-links">
+            <a href="mailto:krpawan09001@gmail.com" title="Email" class="email">
+                <i class="fas fa-envelope"></i> Email
+            </a>
+            <a href="https://github.com/PawanKumarrr" target="_blank" title="GitHub" class="github">
+                <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/pawan-chauhan-a348251ba/" target="_blank" title="LinkedIn" class="linkedin">
+                <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://www.researchgate.net/profile/Pawan-Kumar-254" target="_blank" title="ResearchGate" class="researchgate">
+                <i class="fab fa-researchgate"></i> ResearchGate
+            </a>
+            <a href="https://leetcode.com/u/pawan_chauhann/" target="_blank" title="LeetCode" class="leetcode">
+                <i class="fas fa-code"></i> LeetCode
+            </a>
+            <a href="https://creativealgorithms-cd4c88.gitlab.io/team/" target="_blank" title="Creative Algorithms Lab" class="lab">
+                <i class="fas fa-flask"></i> Lab
+            </a>
+        </div>
     </header>
     <nav>
         <ul>
@@ -195,9 +282,9 @@
     <section id="summary">
         <h2>Professional Summary</h2>
         <ul>
-            <li>Master of Engineering candidate in Computing and Software at McMaster University, specializing in software development, DevOps, and artificial intelligence.</li>
-            <li>Expertise in building scalable microservices architectures, cloud computing solutions, and agile development, with a focus on secure and efficient software systems.</li>
-            <li>Proficient in processing large-scale data, managing distributed systems, orchestrating containers with Docker and Kubernetes, and implementing CI/CD pipelines for high-performance computing environments.</li>
+            <li>Completed Master of Engineering in Computing and Software at McMaster University under the supervision of <a href="https://www.eng.mcmaster.ca/cas/faculty/dr-stephen-kelly/" target="_blank">Dr. Stephen Kelly</a>, with a focus on software development, DevOps, and artificial intelligence.</li>
+            <li>Expertise in designing and implementing scalable microservices architectures, cloud computing solutions, and agile development methodologies, emphasizing secure and efficient software systems.</li>
+            <li>Proficient in handling large-scale data processing, managing distributed systems, orchestrating containers with Docker and Kubernetes, and deploying CI/CD pipelines for high-performance computing environments.</li>
             <li>Advanced skills in machine learning, deep learning, Transformer architectures, Large Language Models, prompt engineering, and neural network optimization using PyTorch and TensorFlow frameworks.</li>
         </ul>
     </section>
@@ -212,7 +299,7 @@
         <div class="education">
             <h3>B.Tech., Electronics and Communication Engineering</h3>
             <p>Guru Gobind Singh Indraprastha University, Delhi, India | Aug 2019 – May 2023</p>
-            <p>CGPA: 8.34/10.0, Department Rank: 07/208</p>
+            <p>CGPA: 8.34/10.0</p>
         </div>
     </section>
     <section id="experience">
