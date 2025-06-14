@@ -76,9 +76,9 @@
             transform: scale(1.1);
         }
         .social-links .email { color: #ea4335; }
-        .social-links .github { color: #ffffff !important; } /* Changed to white to match ResearchGate */
+        .social-links .github { color: #ffffff !important; }
         .social-links .linkedin { color: #0077b5; }
-        .social-links .researchgate { color: #ffffff !important; } /* Kept white as requested */
+        .social-links .researchgate { color: #ffffff !important; }
         .social-links .leetcode { color: #f7a41d; }
         .social-links .lab { color: #6b48ff; }
         .cv-link {
@@ -172,6 +172,28 @@
         }
         a:hover {
             text-decoration: underline;
+        }
+        .article-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background-color: #3498db;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .article-link:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+        .article-link i {
+            font-size: 1.1rem;
         }
         footer {
             text-align: center;
@@ -335,7 +357,11 @@
         <h2>Technical Projects</h2>
         <div class="project">
             <h3><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">Evolving Continuous Control Policies through Comparative Neuroevolution</a></h3>
-            <p><a href="article.html">Read the full article</a></p>
+            <p>
+                <a href="article.html" class="article-link" title="Read the detailed article">
+                    <i class="fas fa-book"></i> Read the Full Article
+                </a>
+            </p>
             <ul>
                 <li>Conducted Comparative Analysis of Reinforcement Learning and Evolutionary Algorithms: Designed and implemented a rigorous evaluation of Proximal Policy Optimization (PPO) and Covariance Matrix Adaptation Evolution Strategy (CMA-ES) for continuous control tasks in MuJoCo environments.</li>
                 <li>Developed Custom Frameworks for Policy Optimization: Built a custom CMA-ES framework using DEAP and adapted stable-baselines3 for PPO, optimizing neural network policies.</li>
@@ -344,7 +370,11 @@
         </div>
         <div class="project">
             <h3><a href="https://github.com/PawanKumarrr/HCAI-theory-of-mind-gymnasium-lunar-lander">Machine Theory of Mind in LunarLander-v3: A Proof-of-Concept</a></h3>
-            <p><a href="lunarlander_article.html">Read the full article</a></p>
+            <p>
+                <a href="lunarlander_article.html" class="article-link" title="Read the detailed article">
+                    <i class="fas fa-book"></i> Read the Full Article
+                </a>
+            </p>
             <ul>
                 <li>Developed and Implemented Machine Theory of Mind (ToM) in AI: Designed and trained a neural network (ToMnet) to demonstrate implicit and explicit Theory of Mind in the LunarLander-v3 environment.</li>
                 <li>Applied Advanced Reinforcement Learning Techniques: Trained a PPO agent using Stable Baselines3 for 8 million timesteps, achieving high rewards.</li>
