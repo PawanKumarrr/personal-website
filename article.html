@@ -3,296 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comparative Neuroevolution - Pawan Kumar</title>
+    <title>Robots Learning to Move: AI’s Next Step - Pawan Kumar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-            color: #333;
-            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
         }
-        header {
-            background: #2c3e50;
-            color: #fff;
-            text-align: center;
-            padding: 2rem 0;
+        .hero-bg {
+            background: #1e40af; /* Solid blue for simpler print */
+            color: white;
         }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        nav {
-            background: #34495e;
+        .placeholder-container {
+            background: #f3f4f6;
+            border: 2px solid #d4af37; /* Gold accent */
+            border-radius: 0.5rem;
             padding: 1rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        nav ul li {
-            margin: 0 1rem;
-        }
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s;
-        }
-        nav ul li a:hover {
-            color: #3498db;
-        }
-        section {
-            padding: 2rem;
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fff;
-            margin-bottom: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        section h2 {
-            color: #2c3e50;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
-            margin-bottom: 1rem;
-        }
-        ul {
-            padding-left: 1.5rem;
-        }
-        ul li {
-            margin-bottom: 0.5rem;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        footer {
             text-align: center;
-            padding: 1rem;
-            background: #2c3e50;
-            color: #fff;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            color: #1e40af;
+            font-weight: 600;
         }
-        video {
+        .placeholder-img {
             max-width: 100%;
             height: auto;
-            margin: 1rem 0;
-            border-radius: 8px;
+            display: block;
+            margin: 0 auto;
         }
-        .video-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
+        .pull-quote {
+            background: #e0f2fe;
+            border-left: 4px solid #1e40af;
+            padding: 1.5rem;
+            font-style: italic;
+            font-size: 1.25rem;
+            margin: 2rem 0;
         }
-        .video-item {
-            flex: 1 1 45%;
-            max-width: 45%;
-            text-align: center;
+        .cta-button {
+            transition: background-color 0.3s;
+            background: #1e40af;
         }
-        .video-item p {
-            margin: 0.5rem 0;
-            font-size: 0.9rem;
-            color: #2c3e50;
+        .cta-button:hover {
+            background: #2563eb;
         }
-        @media (max-width: 600px) {
-            nav ul {
-                flex-direction: column;
-                align-items: center;
+        @media print {
+            body {
+                background: white;
+                color: black;
             }
-            nav ul li {
-                margin: 0.5rem 0;
+            .hero-bg {
+                background: none;
+                color: black;
+                border-bottom: 2px solid #d4af37;
             }
-            header h1 {
-                font-size: 1.8rem;
+            .placeholder-container {
+                background: white;
+                border: 2px solid black;
+                color: black;
             }
-            section {
-                padding: 1rem;
+            .placeholder-img {
+                filter: grayscale(0); /* Ensure images print clearly */
             }
-            .video-item {
-                flex: 1 1 100%;
-                max-width: 100%;
+            .bg-blue-50 {
+                background: white;
+            }
+            .text-blue-600 {
+                color: black !important;
+            }
+            .shadow-xl {
+                box-shadow: none; /* Remove shadows for print */
+            }
+            nav, .cta-button:hover {
+                background: none;
+                color: black;
             }
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Teaching Machines to Move: Comparing Two AI Learning Methods</h1>
-        <p>Pawan Kumar</p>
+<body class="bg-gray-50 text-gray-900">
+    <!-- Hero Section -->
+    <header class="hero-bg text-center py-20 px-4">
+        <h1 class="text-4xl md:text-6xl font-semibold mb-6">Robots Learning to Move: AI’s Next Step</h1>
+        <p class="text-xl mb-4">By Pawan Kumar</p>
+        <p class="text-lg max-w-3xl mx-auto">Can robots learn to move like humans? Discover how AI is teaching machines to walk, reach, and balance, powering smarter cars, healthcare, and more.</p>
+        <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo" class="inline-block mt-8 bg-blue-600 text-white py-3 px-8 rounded-lg font-semibold cta-button">Explore the Project</a>
     </header>
-    <nav>
-        <ul>
-            <li><a href="index.html">Back to Home</a></li>
-        </ul>
-    </nav>
-    <section>
-        <h2>Introduction</h2>
-        <p>Imagine teaching a robot to move like a human—whether it’s a robotic arm reaching for an object or a legged robot walking across a room. My project, "Teaching Machines to Move," explores two ways to train artificial intelligence (AI) to control such movements in a simulated world called MuJoCo, where robots tackle tasks like reaching, walking, running, or balancing. The two methods are <strong>Proximal Policy Optimization (PPO)</strong>, which learns by fine-tuning its actions step-by-step, like practicing a skill with feedback, and <strong>Covariance Matrix Adaptation Evolution Strategy (CMA-ES)</strong>, which mimics evolution by testing many solutions and keeping the best ones, like nature selecting the strongest traits. By comparing these methods, I discovered how each excels in different scenarios, offering ideas for building smarter robots in fields like manufacturing, healthcare, or self-driving vehicles.</p>
-        <p><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">Explore the project on GitHub</a></p>
-    </section>
-    <section>
-        <h2>Why This Matters</h2>
-        <p>The goal was to find out which method teaches robots better and faster, much like choosing the best way to learn a new sport. I tested PPO and CMA-ES on four tasks in MuJoCo:</p>
-        <ul>
-            <li><strong>Reacher</strong>: A robotic arm trying to touch a moving target, like playing a game of tag.</li>
-            <li><strong>Ant</strong>: A four-legged robot learning to walk, similar to a puppy finding its balance.</li>
-            <li><strong>HalfCheetah</strong>: A robot running forward, like a sprinter racing down a track.</li>
-            <li><strong>InvertedDoublePendulum</strong>: A pole on a cart staying upright, like balancing a broom on your finger.</li>
-        </ul>
-        <p>I wanted to see how quickly each method learns (like mastering a skill) and how well the robots perform (like winning a game). This could help create robots that adapt to real-world challenges, such as navigating a factory or assisting in surgeries.</p>
-    </section>
-    <section>
-        <h2>What If: A New Way to Train Robots?</h2>
-        <p>What if we combined the strengths of PPO and CMA-ES to create robots that learn quickly <em>and</em> adapt to unexpected changes, like a delivery drone dodging obstacles in a storm? PPO is great at learning fast when the path is clear, like following a recipe. CMA-ES is better at exploring new possibilities, like experimenting with ingredients when the recipe fails. A hybrid approach could train robots to handle complex, unpredictable environments—think of self-driving cars navigating busy streets or robotic arms assembling products in a dynamic factory. This could spark new AI startups focused on adaptive robotics, transforming industries with machines that learn smarter and faster.</p>
-    </section>
-    <section>
-        <h2>How It Worked</h2>
-        <h3>The Testing Ground</h3>
-        <p>MuJoCo is a virtual playground where robots practice tasks. Each task has specific challenges:</p>
-        <ul>
-            <li><strong>Reacher</strong>: The arm adjusts two joints to chase a target in a 2D space, with longer practice sessions to perfect its aim.</li>
-            <li><strong>Ant</strong>: The robot coordinates eight joints to walk steadily in 3D, balancing speed and stability.</li>
-            <li><strong>HalfCheetah</strong>: The robot uses six joints to run fast, rewarded for speed but penalized for wasteful moves.</li>
-            <li><strong>InvertedDoublePendulum</strong>: The cart adjusts one force to keep a double pole upright, a tricky balancing act.</li>
-        </ul>
-        <h3>Training the AI</h3>
-        <p>I used two approaches to train the AI:</p>
-        <ul>
-            <li><strong>PPO</strong>: Built with Stable-Baselines3, PPO learns by tweaking a neural network (like a brain) based on feedback, using settings like a learning speed of 0.0003 and practicing in 4–12 virtual worlds at once. It’s like a coach giving precise tips after each try.</li>
-            <li><strong>CMA-ES</strong>: Created with DEAP, CMA-ES tests many “robot brains” at once, keeping the best performers and tweaking others, like breeding stronger plants. I used groups of 10–50 robots and ran up to 3000 rounds of tests.</li>
-        </ul>
-        <p>Both methods ran on a powerful computer cluster, ensuring fair and repeatable results. I tracked their progress with data logs and videos to see how the robots moved.</p>
-        <h3>Measuring Success</h3>
-        <p>I judged the methods by:</p>
-        <ul>
-            <li><strong>Score</strong>: How much reward the robot earned, like points in a game, averaged over 15–20 test runs.</li>
-            <li><strong>Learning Speed</strong>: How fast the robot improved, shown in graphs.</li>
-            <li><strong>Consistency</strong>: How steady the results were, using box plots to show score ranges.</li>
-            <li><strong>Videos</strong>: Visual proof of the robots’ skills, like watching a performance.</li>
-        </ul>
-    </section>
-    <section>
-        <h2>What I Found</h2>
-        <p>Each method shone in different ways across the tasks:</p>
-        <ul>
-            <li><strong>Reacher</strong>:
-                <ul>
-                    <li><strong>PPO</strong>: Learned quickly, scoring around -5 (close to the target), like hitting the bullseye reliably.</li>
-                    <li><strong>CMA-ES</strong>: Scored around -15, improving slowly but exploring widely, like trying many paths to find a good one. See graphs at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/cma_es_runs_separate.png">GitHub</a>.</li>
-                </ul>
-            </li>
-            <li><strong>Ant</strong>:
-                <ul>
-                    <li><strong>PPO</strong>: Reached a score of 2000 fast, walking steadily, like a pro athlete.</li>
-                    <li><strong>CMA-ES</strong>: Scored near 1800 after more time, with varied results, like a team still practicing. See box plot at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/antBox.png">GitHub</a>.</li>
-                </ul>
-            </li>
-            <li><strong>HalfCheetah</strong>:
-                <ul>
-                    <li><strong>PPO</strong>: Zoomed to 5500–6000, running smoothly, like a champion runner.</li>
-                    <li><strong>CMA-ES</strong>: Hit 2500–3000, solid but less speedy, like a strong jogger. See comparison at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/ppo_vs_cma_es_different_x_axes.png">GitHub</a>.</li>
-                </ul>
-            </li>
-            <li><strong>InvertedDoublePendulum</strong>:
-                <ul>
-                    <li><strong>PPO</strong>: Mastered balancing at 9000, steady as a tightrope walker.</li>
-                    <li><strong>CMA-ES</strong>: Reached 6000, good but less consistent, like balancing with some wobbles. See success at <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/figures/vizz.png">GitHub</a>.</li>
-                </ul>
-            </li>
-        </ul>
-        <h3>Watch the Robots in Action</h3>
-        <p>These videos show PPO-trained robots performing each task smoothly:</p>
-        <div class="video-container">
-            <div class="video-item">
-                <video controls>
-                    <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/reacher.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p>Reacher (PPO)</p>
-            </div>
-            <div class="video-item">
-                <video controls>
-                    <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/Ant.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p>Ant (PPO)</p>
-            </div>
-            <div class="video-item">
-                <video controls>
-                    <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/HalfCheetha.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p>HalfCheetah (PPO)</p>
-            </div>
-            <div class="video-item">
-                <video controls>
-                    <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/IDP.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <p>InvertedDoublePendulum (PPO)</p>
-            </div>
+
+    <!-- Navigation -->
+    <nav class="bg-gray-900 text-white py-4 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <ul class="flex justify-center space-x-8 flex-wrap">
+                <li><a href="index.html" class="hover:text-blue-400 transition-colors font-semibold">Back to Home</a></li>
+            </ul>
         </div>
-        <p>CMA-ES videos are available in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/tree/main/videos/cma_es">GitHub repository</a>.</p>
-        <h3>Key Lessons</h3>
-        <ul>
-            <li><strong>PPO</strong>: Learns fast and performs best when tasks have clear feedback, like following a map. It needed fewer tries (e.g., 2.4 million steps for Reacher) to excel.</li>
-            <li><strong>CMA-ES</strong>: Explores broadly, great for tricky tasks where feedback is unclear, like finding a path in fog. It took more tries (e.g., 830 million steps for Reacher) but could handle surprises better.</li>
-            <li><strong>Teamwork Potential</strong>: Combining PPO’s speed with CMA-ES’s exploration could create super-smart robots, like a student who studies fast but also thinks outside the box.</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Try It Yourself</h2>
-        <p>Anyone can recreate this project with:</p>
-        <ul>
-            <li><strong>Code</strong>: Python scripts and notebooks on <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">GitHub</a>.</li>
-            <li><strong>Tools</strong>: Listed in <code>requirements.txt</code>, including MuJoCo, Stable-Baselines3, and DEAP.</li>
-            <li><strong>Settings</strong>: Files for CMA-ES and PPO configurations.</li>
-            <li><strong>Results</strong>: Data logs and graphs for scores and visuals.</li>
-            <li><strong>Guide</strong>: Step-by-step instructions in the <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/README.md">README</a>.</li>
-        </ul>
-        <p>Run it with these commands:</p>
-        <pre><code>git clone https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo.git
-cd PPO-vs-CMAES-MuJoCo
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-cd code/ppo
-jupyter notebook</code></pre>
-    </section>
-    <section>
-        <h2>What's Next?</h2>
-        <p>This project opens doors to exciting possibilities:</p>
-        <ul>
-            <li><strong>Smarter Hybrids</strong>: Mix PPO and CMA-ES to build robots that learn fast and adapt to surprises, like a self-driving car handling sudden road changes.</li>
-            <li><strong>Teamwork</strong>: Train multiple robots to work together, like a swarm of drones delivering packages.</li>
-            <li><strong>Real-World Impact</strong>: Use these methods for robots in factories, hospitals, or space exploration.</li>
-            <li><strong>Tough Tests</strong>: Check if CMA-ES handles messy feedback better than PPO, like navigating a noisy sensor.</li>
-        </ul>
-    </section>
-    <section>
-        <h2>Wrapping Up</h2>
-        <p>My project shows how two AI methods—PPO and CMA-ES—teach robots to move in different ways. PPO is like a quick learner with clear instructions, while CMA-ES is a creative explorer finding new paths. By sharing my code and results, I hope to inspire others to build better AI for robots that can help in everyday life, from assembling products to exploring distant planets.</p>
-    </section>
-    <section>
-        <p><em>Released under the MIT License. Videos, code, and figures are available on <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo">GitHub</a>.</em></p>
-    </section>
-    <footer>
-        <p>© 2025 Pawan Kumar. All rights reserved.</p>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-16">
+        <!-- Introduction -->
+        <section class="bg-white rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Smarter Robots, Step by Step</h2>
+            <p class="text-lg mb-4">Imagine teaching a child to catch a ball: they try, miss, and try again, learning with each attempt. That’s how artificial intelligence (AI) is training robots to move. My project explores two AI methods in a virtual world called MuJoCo, where robots practice walking, reaching, and balancing. One method acts like a teacher giving clear instructions, while the other mimics nature’s way of picking the best ideas. These findings could help robots drive cars, assist doctors, or save energy.</p>
+            <p class="text-lg">This work is about making machines that move smarter, helping us in everyday life.</p>
+        </section>
+
+        <!-- What is RL -->
+        <section class="bg-white rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Reinforcement Learning: Trial and Triumph</h2>
+            <p class="text-lg mb-4">Reinforcement Learning (RL) is like teaching a dog to fetch: reward it for success, and it learns. In RL, an AI tries a task, gets feedback, and improves through trial and error, using smart algorithms.</p>
+            <ul class="list-disc pl-8 text-lg mb-4">
+                <li><strong>Self-Driving Cars</strong>: RL helps cars like Tesla’s learn to navigate, dodge obstacles, and park by practicing in virtual worlds.</li>
+                <li><strong>Gaming Pros</strong>: AI like AlphaGo uses RL to master chess, playing millions of games to win.</li>
+                <li><strong>Robots at Work</strong>: RL trains robots to build products or help in surgeries, getting better each time.</li>
+                <li><strong>Energy Efficiency</strong>: RL optimizes data centers, cutting energy use by up to 40%.</li>
+            </ul>
+            <div class="pull-quote">“RL drives self-driving cars, learning from every mile.”</div>
+            <p class="text-lg">RL teaches machines to learn from experience, reshaping industries.</p>
+        </section>
+
+        <!-- What is EC -->
+        <section class="bg-white rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Evolutionary Computation: Nature’s Wisdom</h2>
+            <p class="text-lg mb-4">Evolutionary Computation (EC) is like nature improving species over time. It tests many ideas, keeps the best, and refines the rest—like breeding faster horses. EC finds creative solutions others might overlook.</p>
+            <ul class="list-disc pl-8 text-lg mb-4">
+                <li><strong>Clever Designs</strong>: EC creates lighter airplane parts or stronger bridges by trying thousands of options.</li>
+                <li><strong>Agile Robots</strong>: EC helps robots move through cluttered spaces, like a busy factory.</li>
+                <li><strong>Health Innovations</strong>: EC designs drugs by testing countless formulas, speeding up discoveries.</li>
+                <li><strong>Financial Edge</strong>: EC crafts trading strategies that adapt to market changes.</li>
+            </ul>
+            <p class="text-lg">EC is like a bold inventor, dreaming up new possibilities.</p>
+        </section>
+
+        <!-- Comparison -->
+        <section class="bg-blue-50 rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Teacher vs. Innovator: AI Face-Off</h2>
+            <p class="text-lg mb-4">To find the best way to train robots, I compared RL and EC in MuJoCo, where robots tackled four tasks: reaching a target, walking on four legs, running like a cheetah, and balancing a pole. Here’s what I found:</p>
+            <ul class="list-disc pl-8 text-lg mb-4">
+                <li><strong>RL: The Teacher</strong>: RL learned fast, excelling at clear tasks like running—like a student with a great tutor. It was quick and reliable.</li>
+                <li><strong>EC: The Innovator</strong>: EC took longer but found unique solutions for tricky tasks—like an explorer finding new paths. It was flexible and creative.</li>
+            </ul>
+            <p class="text-lg mb-4">RL races to the finish line, while EC uncovers hidden gems. Together, they’re a powerful team.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                <div class="placeholder-container">
+                    <img src="https://via.placeholder.com/300x200?text=Walking+Task+Plot" alt="Walking Task Plot" class="placeholder-img">
+                    <p class="mt-2">Walking Task Results <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/Ant/image%20copy.png" class="text-blue-600">View Plot</a></p>
+                </div>
+                <div class="placeholder-container">
+                    <img src="https://via.placeholder.com/300x200?text=Running+Task+Plot" alt="Running Task Plot" class="placeholder-img">
+                    <p class="mt-2">Running Task Results <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/HalfCheetha/image%20copy.png" class="text-blue-600">View Plot</a></p>
+                </div>
+                <div class="placeholder-container">
+                    <img src="https://via.placeholder.com/300x200?text=Balancing+Task+Plot" alt="Balancing Task Plot" class="placeholder-img">
+                    <p class="mt-2">Balancing Task Results <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/IDP/image%20copy.png" class="text-blue-600">View Plot</a></p>
+                </div>
+                <div class="placeholder-container">
+                    <img src="https://via.placeholder.com/300x200?text=Reaching+Task+Plot" alt="Reaching Task Plot" class="placeholder-img">
+                    <p class="mt-2">Reaching Task Results <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/Reacher/image%20copy.png" class="text-blue-600">View Plot</a></p>
+                </div>
+            </div>
+            <p class="text-lg">Check out more results, like <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/Reacher/image.png" class="text-blue-600">Reacher curves</a>, on <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo" class="text-blue-600 font-semibold">GitHub</a>.</p>
+        </section>
+
+        <!-- Study Significance -->
+        <section class="bg-white rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Why This Research Matters</h2>
+            <p class="text-lg mb-4">My project compared RL’s Proximal Policy Optimization and EC’s Covariance Matrix Adaptation Evolution Strategy in MuJoCo, teaching robots to move better. The results open exciting doors:</p>
+            <ul class="list-disc pl-8 text-lg mb-4">
+                <li><strong>Healthcare</strong>: RL could perfect robotic surgeries, while EC finds new ways to navigate hospitals.</li>
+                <li><strong>Energy</strong>: Combining RL and EC could save 20–40% in data center energy use.</li>
+                <li><strong>Innovation</strong>: This tech could inspire new companies building robots for care or exploration.</li>
+            </ul>
+            <div class="pull-quote">“Smarter robots could save energy and transform healthcare.”</div>
+            <p class="text-lg">Merging RL’s speed with EC’s creativity sets the stage for intelligent machines.</p>
+        </section>
+
+        <!-- What If -->
+        <section class="bg-blue-50 rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">What If We Push Further?</h2>
+            <p class="text-lg mb-4">What if we blended RL and EC to create robots that learn fast and adapt to surprises? Imagine robot assistants in busy hospitals or drones delivering supplies in storms. This hybrid could reshape industries:</p>
+            <ul class="list-disc pl-8 text-lg mb-4">
+                <li><strong>Healthcare</strong>: What if robots tailored care to each patient, using RL’s precision and EC’s flexibility?</li>
+                <li><strong>Energy</strong>: What if AI cut data center energy by 50% with RL and EC?</li>
+                <li><strong>New Ideas</strong>: What if startups built robots for space or green farming?</li>
+            </ul>
+            <p class="text-lg">These ideas could drive innovation and improve lives.</p>
+        </section>
+
+        <!-- Ethical AI -->
+        <section class="bg-white rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Building Safe Robots</h2>
+            <p class="text-lg mb-4">As robots learn to move, they must be safe and fair. My project ensures robots act responsibly—like moving carefully in crowded spaces. By prioritizing trust and fairness, we create machines that help everyone, from patients to workers. Ethical AI is the heart of progress.</p>
+            <p class="text-lg">Responsible technology builds a better future for all.</p>
+        </section>
+
+        <!-- Visuals -->
+        <section class="bg-white rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">Watch Robots in Action</h2>
+            <p class="text-lg mb-4">These virtual robots show AI’s magic: a robotic arm reaching precisely, a four-legged robot walking, a cheetah-like robot running, and a pole balancing perfectly. Each move highlights how RL and EC teach machines.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="placeholder-container">
+                    <img src="https://via.placeholder.com/300x200?text=Reaching+Video" alt="Reaching Video" class="placeholder-img">
+                    <p class="mt-2">Reaching: Robotic Arm <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/PPO/reacher.mp4" class="text-blue-600">RL Video</a> | <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/cma_es/reacher.mp4" class="text-blue-600">EC Video</a></p>
+                </div>
+                <div class="placeholder-container">
+                    <img src="https://via.placeholder.com/300x200?text=Walking+Video" alt="Walking Video" class="placeholder-img">
+                    <p class="mt-2">Walking: Four-Legged Robot <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/PPO/Ant.mp4" class="text-blue-600">RL Video</a> | <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/cma_es/Ant.mp4" class="text-blue-600">EC Video</a></p>
+                </div>
+                <div class="placeholder-container">
+                    <img src="https://via.placeholder.com/300x200?text=Running+Video" alt="Running Video" class="placeholder-img">
+                    <p class="mt-2">Running: Cheetah Robot <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/PPO/HalfCheetha.mp4" class="text-blue-600">RL Video</a> | <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/cma_es/HalfCheetha.mp4" class="text-blue-600">EC Video</a></p>
+                </div>
+                <div class="placeholder-container">
+                    <img src="https://via.placeholder.com/300x200?text=Balancing+Video" alt="Balancing Video" class="placeholder-img">
+                    <p class="mt-2">Balancing: Pole Act <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/PPO/IDP.mp4" class="text-blue-600">RL Video</a> | <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/cma_es/IDP.mp4" class="text-blue-600">EC Video</a></p>
+                </div>
+            </div>
+            <p class="text-lg mt-6">Explore all videos and results on <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo" class="text-blue-600 font-semibold">GitHub</a>.</p>
+        </section>
+
+        <!-- What’s Next -->
+        <section class="bg-blue-50 rounded-xl shadow-xl p-10 mb-12">
+            <h2 class="text-3xl font-semibold text-gray-800 mb-6">The Future of Robot Learning</h2>
+            <p class="text-lg mb-4">This project is a starting point. By combining RL and EC, we can:</p>
+            <ul class="list-disc pl-8 text-lg mb-4">
+                <li><strong>Improve Healthcare</strong>: Create robots that assist doctors and personalize care.</li>
+                <li><strong>Save Energy</strong>: Build AI that reduces data center energy use for a greener planet.</li>
+                <li><strong>Spark New Ideas</strong>: Inspire companies to develop robots for delivery or exploration.</li>
+            </ul>
+            <p class="text-lg">Let’s create a world where AI robots are trusted partners. Join the journey!</p>
+            <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo" class="inline-block mt-8 bg-blue-600 text-white py-3 px-8 rounded-lg font-semibold cta-button">Discover More</a>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-8">
+        <p class="text-lg">© 2025 Pawan Kumar. Released under the MIT License. <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo" class="text-blue-400">Explore on GitHub</a>.</p>
     </footer>
+
+    <!-- Smooth Scrolling Script -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
 </body>
 </html>
