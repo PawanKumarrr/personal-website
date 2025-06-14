@@ -22,6 +22,10 @@
             text-align: center;
             color: #1e40af;
             font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
         .placeholder-img {
             max-width: 100%;
@@ -143,19 +147,19 @@
             <p class="text-lg mb-4">RL races to the finish line, while EC uncovers hidden gems. Together, they’re a powerful team.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
                 <div class="placeholder-container">
-                    <img src="https://via.placeholder.com/300x200?text=Walking+Task+Plot" alt="Walking Task Plot" class="placeholder-img">
+                    <img src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/plots/Ant/image%20copy.png" alt="Walking Task Plot" class="placeholder-img">
                     <p class="mt-2">Walking Task Results <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/Ant/image%20copy.png" class="text-blue-600">View Plot</a></p>
                 </div>
                 <div class="placeholder-container">
-                    <img src="https://via.placeholder.com/300x200?text=Running+Task+Plot" alt="Running Task Plot" class="placeholder-img">
+                    <img src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/plots/HalfCheetha/image%20copy.png" alt="Running Task Plot" class="placeholder-img">
                     <p class="mt-2">Running Task Results <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/HalfCheetha/image%20copy.png" class="text-blue-600">View Plot</a></p>
                 </div>
                 <div class="placeholder-container">
-                    <img src="https://via.placeholder.com/300x200?text=Balancing+Task+Plot" alt="Balancing Task Plot" class="placeholder-img">
+                    <img src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/plots/IDP/image%20copy.png" alt="Balancing Task Plot" class="placeholder-img">
                     <p class="mt-2">Balancing Task Results <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/IDP/image%20copy.png" class="text-blue-600">View Plot</a></p>
                 </div>
                 <div class="placeholder-container">
-                    <img src="https://via.placeholder.com/300x200?text=Reaching+Task+Plot" alt="Reaching Task Plot" class="placeholder-img">
+                    <img src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/plots/Reacher/image%20copy.png" alt="Reaching Task Plot" class="placeholder-img">
                     <p class="mt-2">Reaching Task Results <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/plots/Reacher/image%20copy.png" class="text-blue-600">View Plot</a></p>
                 </div>
             </div>
@@ -200,19 +204,31 @@
             <p class="text-lg mb-4">These virtual robots show AI’s magic: a robotic arm reaching precisely, a four-legged robot walking, a cheetah-like robot running, and a pole balancing perfectly. Each move highlights how RL and EC teach machines.</p>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="placeholder-container">
-                    <img src="https://via.placeholder.com/300x200?text=Reaching+Video" alt="Reaching Video" class="placeholder-img">
+                    <video controls width="300" height="200">
+                        <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/reacher.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <p class="mt-2">Reaching: Robotic Arm <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/PPO/reacher.mp4" class="text-blue-600">RL Video</a> | <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/cma_es/reacher.mp4" class="text-blue-600">EC Video</a></p>
                 </div>
                 <div class="placeholder-container">
-                    <img src="https://via.placeholder.com/300x200?text=Walking+Video" alt="Walking Video" class="placeholder-img">
+                    <video controls width="300" height="200">
+                        <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/Ant.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <p class="mt-2">Walking: Four-Legged Robot <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/PPO/Ant.mp4" class="text-blue-600">RL Video</a> | <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/cma_es/Ant.mp4" class="text-blue-600">EC Video</a></p>
                 </div>
                 <div class="placeholder-container">
-                    <img src="https://via.placeholder.com/300x200?text=Running+Video" alt="Running Video" class="placeholder-img">
+                    <video controls width="300" height="200">
+                        <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/HalfCheetha.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <p class="mt-2">Running: Cheetah Robot <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/PPO/HalfCheetha.mp4" class="text-blue-600">RL Video</a> | <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/cma_es/HalfCheetha.mp4" class="text-blue-600">EC Video</a></p>
                 </div>
                 <div class="placeholder-container">
-                    <img src="https://via.placeholder.com/300x200?text=Balancing+Video" alt="Balancing Video" class="placeholder-img">
+                    <video controls width="300" height="200">
+                        <source src="https://raw.githubusercontent.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/main/videos/PPO/IDP.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                     <p class="mt-2">Balancing: Pole Act <br><a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/PPO/IDP.mp4" class="text-blue-600">RL Video</a> | <a href="https://github.com/PawanKumarrr/PPO-vs-CMAES-MuJoCo/blob/main/videos/cma_es/IDP.mp4" class="text-blue-600">EC Video</a></p>
                 </div>
             </div>
